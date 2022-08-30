@@ -1,109 +1,170 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-function randomInt(min, max) {
+// function randomInt(min, max) {
 
- }
+// }
 
-function generatePassword(){
+function generatePassword() {
   var userInput = window.prompt("How many characters would you like your password to be?")
   console.log(userInput)
 
   var passwordLength = parseInt(userInput)
 
+  //if (isNaN(passwordLength)) {
+  // window.alert("Not a Number")
+
   if (passwordLength < 8 || passwordLength > 128) {
     window.alert("password must be between 8 -128")
-  return
+    return
   }
-
 
   var wantsAlphaUpper = window.confirm("would you like to use Uppercase letters?");
-  if(wantsAlphaUpper === true) {
-
-  }
   console.log(wantsAlphaUpper)
-  
+
   var wantsAlphaLower = window.confirm("would you like to use Lowercase letters?");
-  if (wantsAlphaLower === true){
-
-  }
   console.log(wantsAlphaLower)
-  
-  var wantsNumbers = window.confirm("would you like to use Numbers?")
-  if(wantsNumbers === true){
 
-  }
+  var wantsNumbers = window.confirm("would you like to use Numbers?");
   console.log(wantsNumbers)
-  
-  var wantsSpecChar = window.confirm("would you like to use Special Characters?")
-if(wantsSpecChar === true){
 
-}
+  var wantsSpecChar = window.confirm("would you like to use Special Characters?");
   console.log(wantsSpecChar)
+
+
+  var alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
+  var alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+  var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
+  var specChar = ["!", "@", "#", "$", "%", "&", "*", "_", "+", "="]
+
+  var pickedVar = [];
+
+
+  //All 4 selected
+  if (wantsAlphaUpper && wantsAlphaLower && wantsNumbers && wantsSpecChar) {
+    pickedVar = pickedVar.concat(alphaUpper, alphaLower, numbers, specChar)
+  }
+
+
+  //All 3 selected
+  else if (wantsAlphaLower && wantsNumbers && wantsSpecChar) {
+    pickedVar = pickedVar.concat(alphaLower, numbers, specChar)
+  }
+
+  else if (wantsAlphaUpper && wantsNumbers && wantsSpecChar) {
+    pickedVar = pickedVar.concat(alphaUpper, numbers, specChar)
+  }
+
+  else if (wantsAlphaUpper && wantsAlphaLower && wantsSpecChar) {
+    pickedVar = pickedVar.concat(alphaUpper, alphaLower, specChar)
+  }
+
+  else if (wantsAlphaUpper && wantsAlphaLower && wantsNumbers) {
+    pickedVar = pickedVar.concat(alphaUpper, alphaLower, numbers)
+  }
+
+
+  //All 2 selected
+  else if (wantsAlphaUpper && wantsAlphaLower) {
+    pickedVar = pickedVar.concat(alphaUpper, alphaLower)
+  }
+
+  else if (wantsAlphaUpper && wantsNumbers) {
+    pickedVar = pickedVar.concat(alphaUpper, alphaLower, numbers, specChar)
+  }
+
+  else if (wantsAlphaUpper && wantsSpecChar) {
+    pickedVar = pickedVar.concat(alphaUpper, alphaLower, numbers, specChar)
+  }
+
+  else if (wantsAlphaLower && wantsNumbers) {
+    pickedVar = pickedVar.concat(alphaUpper, alphaLower, numbers, specChar)
+  }
+
+  else if (wantsAlphaLower && wantsSpecChar) {
+    pickedVar = pickedVar.concat(numbers, specChar)
+  }
+
+  else if (wantsAlphaLower && wantspecChar) {
+    pickedVar = pickedVar.concat(alphaUpper, numbers)
+  }
+
+  //all 1's selected
+
+  else if (wantsAlphaUpper) {
+    pickedVar = pickedVar.concat(alphaUpper)
+  }
+
+  else if (wantsAlphaLower) {
+    pickedVar = pickedVar.concat(alphaLower)
+  }
+
+  else if (wantsNumbers) {
+    pickedVar = pickedVar.concat(alphaUpper, alphaLower, numbers, specChar)
+  }
+
+  else if (wantsSpecChar) {
+    pickedVar = pickedVar.concat(specChar)
+  }
+
+function writePassword() {}
+ var password = generatePassword();
+
+ var passwordText = document.querySelector("#password");
   
+  passwordText.value = password;
+}
+  
+  
+  // Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
-//if (isNaN(passwordLength)) {
- // window.alert("Not a Number")
 
+ 
+
+
+/*if (wantsAlphaUpper) {
+  pickedVar.push(alphaUpper)
 }
 
-
-var alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-
-var alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-
-var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-
-var specChar = ["!", "@", "#", "$", "%", "&", "*", "_", "+", "="]
-
-var optionsCart = [alphaUpper + alphaLower + numbers + specChar];
-
-/*if (wantsAlphaUpper === true) {
-  optionsCart.push(alphaUpper)
+if (wantsAlphaLower) {
+  pickedVar.push(alphaLower)
 }
 
-if (wantsAlphaLower === true) {
-  optionsCart.push(alphaLower)
+if (wantsNumbers) {
+  pickedVar.push(numbers)
 }
 
-if (wantsNumbers === true) {
-  optionsCart.push(numbers)
-}
-
-if (wantsSpecChar === true) {
-  optionsCart.push(specChar)
-}
-
-console.log(optionsCart)
-
-var generatedPassword = ""
+if (wantsSpecChar) {
+  pickedVar.push(specChar)
+}*/
+//console.log(pickedVar)
 
 
-for (var i = 0; i <= passwordLength; i++) {
+//var generatedPassword = ""
+
+
+/*for (var i = 0; i < passwordLength; i++) {
+
   var randomItem = optionsCart[randomInt(0, optionscart.length - 1)]
   generatePassword
 
-  //var randomNumber = Math.floor(Math.random() * chars.length);
-  // password += chars.substring(randomNumber, randomNumber +1);
+  var randomNumber = Math.floor(Math.random() * chars.length);
+  password += chars.substring(randomNumber, randomNumber + 1);
   //}
 
 
   //display generated password on page
   //return "generated password will go here!"
-}*/
+}
 
- //Write password to the #password input
+//Write password to the #password input
+
 function writePassword() {
 
   /*Define a generate password function*/
-  var password = generatePassword();
-
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+  
 
