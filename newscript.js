@@ -8,11 +8,13 @@ function generatePassword() {
 
     var passwordLength = parseInt(userInput)
 
-    //if (isNaN(passwordLength)) {
-     //window.alert("Not a Number")
-
     if (passwordLength < 8 || passwordLength > 128) {
-        window.alert("password must be between 8 -128")
+        window.alert("Password must be between 8 -128")
+        return
+    }
+
+    if (!passwordLength){
+        window.alert("Must choose valid option")
         return
     }
 
@@ -44,7 +46,6 @@ function generatePassword() {
     if (wantsAlphaUpper && wantsAlphaLower && wantsNumbers && wantsSpecChar) {
         pickedVar = pickedVar.concat(alphaUpper, alphaLower, numbers, specChar)
     }
-
 
     //All 3 selected
     else if (wantsAlphaLower && wantsNumbers && wantsSpecChar) {
@@ -89,8 +90,7 @@ function generatePassword() {
         pickedVar = pickedVar.concat(numbers, specChar)
     }
 
-    //all 1's selected
-
+    //All 1's selected
     else if (wantsAlphaUpper) {
         pickedVar = pickedVar.concat(alphaUpper)
     }
@@ -112,14 +112,13 @@ function generatePassword() {
     }
     console.log(pickedVar)
 
-    var password = []
+    var newPass = []
 
     for (var i = 0; i < passwordLength; i++) {
     var choices = Math.floor(Math.random() * pickedVar.length);
-    password += pickedVar[choices];
+    newPass += pickedVar[choices];
  }
-    return password;
-
+    return newPass;
 }
 
 function writePassword() {
