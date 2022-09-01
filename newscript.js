@@ -9,7 +9,7 @@ function generatePassword() {
     var passwordLength = parseInt(userInput)
 
     //if (isNaN(passwordLength)) {
-    // window.alert("Not a Number")
+     //window.alert("Not a Number")
 
     if (passwordLength < 8 || passwordLength > 128) {
         window.alert("password must be between 8 -128")
